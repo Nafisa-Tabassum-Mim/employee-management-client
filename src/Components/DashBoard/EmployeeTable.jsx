@@ -35,7 +35,7 @@ const EmployeeTable = ({ user, handleVerification, handlePay }) => {
                                                     <span className="label-text font-medium text-lg text-black">Salary</span>
                                                 </label>
                                                 <label className="input-group">
-                                                    <input type="text" name="salary" defaultValue={salary} placeholder="salary" className="input input-bordered w-full" />
+                                                    <input type="text" name="salary" readOnly defaultValue={salary} placeholder="salary" className="input input-bordered w-full" />
                                                 </label>
                                             </div>
                                         </div>

@@ -43,9 +43,9 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       },
       {
-        path:'/employee-details/:_id',
+        path:'employee-details/:_id',
         element:<EmployeeChart></EmployeeChart>,
-        loader:({params})=>fetch('')
+        loader:({params})=>fetch(`http://localhost:5000/users/${params._id}`)
       }
     ]
   },

@@ -1,14 +1,43 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import {
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+} from "recharts";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+
 
 const EmployeeChart = () => {
-    const { name, email, photo, account, salary, isVerified, designation } = useLoaderData()
+    const { _id, name, photo, designation } = useLoaderData()
 
-    console.log(name, email)
+    const axiosPublic = useAxiosPublic()
+    const { data: payments = [] } = useQuery({
+        queryKey: ['payments', _id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/payment/${_id}`);
+            return res.data;
+        },
+    });
+
+    const transformedPayments = payments.map(payment => {
+        const { salary, date } = payment;
+        const dateObj = new Date(date);
+        const monthName = dateObj.toLocaleString('en-US', { month: 'long' });
+        const year = dateObj.getFullYear();
+        const monthYear = `${monthName}'s ${year}`;
+        return { monthYear: monthYear, salary: salary };
+    });
+
     return (
         <div>
             <h3 className="text-5xl text-center font-serif m-8">Employee details</h3>
             <div className="flex justify-center gap-8">
-                <div className="bg-red-200">
+                <div className="">
                     <div className="avatar">
                         <div className="w-44 rounded">
                             <img src={photo} />
@@ -21,8 +50,25 @@ const EmployeeChart = () => {
                 </div>
             </div>
 
-            <div>
-                
+            <div className="flex justify-center mt-8">
+                <BarChart
+                    width={500}
+                    height={300}
+                    data={transformedPayments}
+                    margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                    }}
+                >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="monthYear" />
+                    <YAxis />
+                    <Tooltip shared={false} trigger="click" />
+                    <Legend />
+                    <Bar dataKey="salary" fill='black' />
+                </BarChart>
             </div>
         </div>
     );

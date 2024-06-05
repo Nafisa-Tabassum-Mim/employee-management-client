@@ -28,7 +28,7 @@ const EmployeeTable = ({ user, handleVerification, handlePay }) => {
                             <div className="modal-box">
                                 <div className="p-2">
                                     <h2 className="text-xl font-bold my-4">Pay {name}'s Salary</h2>
-                                    <form onSubmit={(e) => handlePay(e, _id)}>
+                                    <form onSubmit={(e) => handlePay(e, _id,salary,startDate)}>
                                         <div className="mb-8 gap-2">
                                             <div className="form-control w-full">
                                                 <label className="label">

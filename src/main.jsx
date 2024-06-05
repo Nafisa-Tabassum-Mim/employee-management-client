@@ -17,6 +17,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import EmployeeChart from './Components/DashBoard/EmployeeChart.jsx';
 
 const queryClient = new QueryClient()
 
@@ -40,7 +41,11 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
-
+      },
+      {
+        path:'/employee-details/:_id',
+        element:<EmployeeChart></EmployeeChart>,
+        loader:({params})=>fetch('')
       }
     ]
   },

@@ -36,33 +36,31 @@ const AuthProvider = ({ children }) => {
             const loggedUser = { email: userEmail };
             setUser(currentUser);
             console.log('current user', currentUser);
-            setLoading(false)
 
-            //if user exist then issue a token
-            // if (currentUser) {
-            //     axios.post('https://volunteer-website-server.vercel.app/jwt', loggedUser, {
-            //         withCredentials: true
-            //     })
-            //         .then((res) => {
-            //             setUser(currentUser);
-            //             setLoading(false);
-            //             console.log('token response', res.data)
-            //         })
-            // }
-            // else{
-            //     setUser(null);
-            //     axios.post('https://volunteer-website-server.vercel.app/logout',loggedUser,{
-            //         withCredentials:true
-            //     })
-            //     .then(res=>{
-            //         setLoading(false);
-            //         console.log(res.data)
-            //     })
-            // }
+            // if user exist then issue a token
+            if (currentUser) {
+                // axios.post('https://volunteer-website-server.vercel.app/jwt', loggedUser, {
+                //     withCredentials: true
+                // })
+                //     .then((res) => {
+                        setUser(currentUser);
+                        setLoading(false);
+                    //     console.log('token response', res.data)
+                    // })
+            }
+            else{
+                setUser(null);
+                // axios.post('https://volunteer-website-server.vercel.app/logout',loggedUser,{
+                //     withCredentials:true
+                // })
+                // .then(res=>{
+                    setLoading(false);
+                //     console.log(res.data)
+                // })
+            }
         });
         return () => {
             unsubscribe();
-            setLoading(false)
 
         }
     }, [])

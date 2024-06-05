@@ -3,6 +3,7 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import EmployeeTable from "./EmployeeTable";
+import { ToastContainer, toast } from "react-toastify";
 
 const EmployeeList = () => {
 
@@ -29,6 +30,21 @@ const EmployeeList = () => {
             });
         }
     }
+    const handlePay = async (e, id, salary, startDate) => {
+        e.preventDefault();
+        const paymentInfo = {
+            salary: salary,
+            date: startDate,
+            payId: id
+        };
+        const res = await axiosSecure.post(`/payment`, paymentInfo);
+        console.log(res);
+        if (res.data.insertedId) {
+            toast('Payment is done !')
+        }
+    };
+
+
     return (
         <div>
             <div className="flex justify-center my-4">
@@ -56,6 +72,7 @@ const EmployeeList = () => {
                                     key={user._id}
                                     user={user}
                                     handleVerification={handleVerification}
+                                    handlePay={handlePay}
                                 ></EmployeeTable>
                             )
                         }
@@ -63,6 +80,7 @@ const EmployeeList = () => {
                     </tbody>
                 </table>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

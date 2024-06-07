@@ -7,6 +7,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { useContext } from "react";
 import { MdOutlineAttachMoney } from "react-icons/md";
+import { FaRegFileAlt } from "react-icons/fa";
 
 const DashBoard = () => {
     const [peopleArray] = useUser();
@@ -38,7 +39,7 @@ const DashBoard = () => {
                     {role === 'HR' && (
                         <>
                         <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
-                        <li> <NavLink to='/dashboard/progress'><RiContactsLine />Work Progress</NavLink></li>
+                        <li> <NavLink to='/dashboard/progress'><FaRegFileAlt />Work Progress</NavLink></li>
                         </>
                     )}
                     {role === 'Employee' && (

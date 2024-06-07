@@ -20,8 +20,9 @@ const EmployeeForm = () => {
         const work = Number(form.work.value);
         const date = form.date.value;
         const email = user.email;
+        const name = user.displayName
 
-        const workItem = { task, work, date, email };
+        const workItem = { task, work, date, email,name };
         console.log(workItem);
 
         // send data to the server

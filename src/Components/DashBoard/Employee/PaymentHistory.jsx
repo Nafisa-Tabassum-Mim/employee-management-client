@@ -66,24 +66,24 @@ const PaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
-           <div className="flex justify-center my-8">
-           <div className="join grid grid-cols-2 w-[150px] mt-4">
-                <button
-                    className="join-item btn btn-outline"
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                    disabled={currentPage === 0}
-                >
-                    Previous
-                </button>
-                <button
-                    className="join-item btn btn-outline"
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                    disabled={currentPage === totalPages - 1}
-                >
-                    Next
-                </button>
+            <div className="flex justify-center my-8">
+                <div className="join grid grid-cols-2 w-[150px] mt-4">
+                    <button
+                        className="join-item btn btn-outline"
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                        disabled={currentPage === 0}
+                    >
+                        Previous
+                    </button>
+                    <button
+                        className="join-item btn btn-outline"
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                        disabled={currentPage === totalPages - 1}
+                    >
+                        Next
+                    </button>
+                </div>
             </div>
-           </div>
         </div>
     );
 };

@@ -20,6 +20,8 @@ import {
 import EmployeeChart from './Components/DashBoard/EmployeeChart.jsx';
 import EmployeeList from './Components/DashBoard/EmployeeList.jsx';
 import EmployeeForm from './Components/DashBoard/Employee/EmployeeForm.jsx';
+import PaymentHistory from './Components/DashBoard/Employee/PaymentHistory.jsx';
+
 
 const queryClient = new QueryClient()
 
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: 'work-sheet',
         element: <EmployeeForm></EmployeeForm>,
+      },
+      {
+        path: 'payment-history',
+        element: <PaymentHistory></PaymentHistory>,
       }
     ]
   },

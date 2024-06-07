@@ -6,6 +6,7 @@ import { RiContactsLine } from "react-icons/ri";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { useContext } from "react";
+import { MdOutlineAttachMoney } from "react-icons/md";
 
 const DashBoard = () => {
     const [peopleArray] = useUser();
@@ -33,12 +34,15 @@ const DashBoard = () => {
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-gray-400 text-white">
-                <ul className="menu p-4 text-xl uppercase">
+                <ul className="menu p-4 text-lg uppercase">
                     {role === 'HR' && (
                         <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
                     )}
                     {role === 'Employee' && (
+                       <>
                         <li> <NavLink to='/dashboard/work-sheet'><RiContactsLine />Work sheet </NavLink></li>
+                        <li> <NavLink to='/dashboard/payment-history'><MdOutlineAttachMoney />Payment History </NavLink></li>
+                       </>
                     )}
 
 

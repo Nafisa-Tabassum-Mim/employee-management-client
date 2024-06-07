@@ -48,6 +48,11 @@ const DashBoard = () => {
                         <li> <NavLink to='/dashboard/payment-history'><MdOutlineAttachMoney />Payment History </NavLink></li>
                        </>
                     )}
+                    {role === 'Admin' && (
+                           <>
+                           <li> <NavLink to='/dashboard/all-employee-list'><RiContactsLine />All Employee List</NavLink></li>
+                           </>
+                    )}
 
 
 

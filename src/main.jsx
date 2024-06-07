@@ -22,6 +22,8 @@ import EmployeeList from './Components/DashBoard/EmployeeList.jsx';
 import EmployeeForm from './Components/DashBoard/Employee/EmployeeForm.jsx';
 import PaymentHistory from './Components/DashBoard/Employee/PaymentHistory.jsx';
 import WorkProgress from './Components/DashBoard/WorkProgress.jsx';
+import AllEmHRList from './Components/DashBoard/Admin/AllEmHRList.jsx';
+
 
 const queryClient = new QueryClient()
 
@@ -71,7 +73,12 @@ const router = createBrowserRouter([
       {
         path: 'payment-history',
         element: <PaymentHistory></PaymentHistory>,
-      }
+      },
+      // admin 
+      {
+        path: 'all-employee-list',
+        element: <AllEmHRList></AllEmHRList>,
+      },
     ]
   },
 

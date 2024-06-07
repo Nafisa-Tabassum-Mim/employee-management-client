@@ -48,7 +48,7 @@ const EmployeeList = () => {
 
     return (
         <div>
-            <h3 className="text-5xl text-center text-white m-12">
+            <h3 className="text-4xl text-center text-white m-12">
                 <span className="bg-gray-700 px-2 rounded-xl font-mono">Human Resource Executive</span>
             </h3>
             <div className="flex justify-center my-4">
@@ -58,7 +58,7 @@ const EmployeeList = () => {
                 <table className="table  w-full text-xl">
                     {/* head */}
                     <thead>
-                        <tr className="text-xl">
+                        <tr className="text-xl bg-gray-700 text-white">
                             <th>Name</th>
                             <th>Email</th>
                             <th>Verified </th>

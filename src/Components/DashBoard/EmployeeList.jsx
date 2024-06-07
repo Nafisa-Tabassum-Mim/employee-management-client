@@ -30,12 +30,13 @@ const EmployeeList = () => {
             });
         }
     }
-    const handlePay = async (e, id, salary, startDate) => {
+    const handlePay = async (e, id, salary, startDate,email) => {
         e.preventDefault();
         const paymentInfo = {
             salary: salary,
             date: startDate,
-            payId: id
+            payId: id,
+            email:email
         };
         const res = await axiosSecure.post(`/payment`, paymentInfo);
         console.log(res);

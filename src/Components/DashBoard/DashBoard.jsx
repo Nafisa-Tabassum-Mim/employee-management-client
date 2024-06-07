@@ -36,7 +36,9 @@ const DashBoard = () => {
             <div className="w-64 min-h-screen bg-gray-400 text-white">
                 <ul className="menu p-4 text-lg uppercase">
                     {role === 'HR' && (
+                        <>
                         <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
+                        </>
                     )}
                     {role === 'Employee' && (
                        <>

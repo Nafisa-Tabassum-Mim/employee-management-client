@@ -49,8 +49,9 @@ const EmployeeChart = () => {
                     <p className="text-xl">{designation}</p>
                 </div>
             </div>
+            <p className="text-2xl text-center mt-8">{name}'s monthly salary :</p>
+            <div className="flex justify-center mt-2">
 
-            <div className="flex justify-center mt-8">
                 <BarChart
                     width={500}
                     height={300}

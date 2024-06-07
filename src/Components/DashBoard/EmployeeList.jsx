@@ -16,7 +16,7 @@ const EmployeeList = () => {
             return res.data
         }
     })
-    console.log(users)
+    // console.log(users)
 
     const handleVerification = async (id) => {
         const res = await axiosSecure.patch(`/users/${id}`);
@@ -47,11 +47,14 @@ const EmployeeList = () => {
 
     return (
         <div>
+            <h3 className="text-5xl text-center text-white m-12">
+                <span className="bg-gray-700 px-2 rounded-xl font-mono">Human Resource Executive</span>
+            </h3>
             <div className="flex justify-center my-4">
                 <h2 className="text-3xl">Total Employee ({users.length}) </h2>
             </div>
             <div className="overflow-x-auto">
-                <table className="table table-zebra w-full text-xl">
+                <table className="table  w-full text-xl">
                     {/* head */}
                     <thead>
                         <tr className="text-xl">

@@ -63,7 +63,7 @@ const EmployeeTable = ({ user, handleVerification, handlePay }) => {
                 )}
             </td>
             <td>
-                <Link to={`/employee-details/${_id}`}><button className="btn text-green-600">Details</button></Link>
+                <Link to={`/dashboard/employee-details/${_id}`}><button className="btn text-green-600">Details</button></Link>
             </td>
         </tr>
     );

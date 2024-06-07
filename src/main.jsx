@@ -18,6 +18,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import EmployeeChart from './Components/DashBoard/EmployeeChart.jsx';
+import EmployeeList from './Components/DashBoard/EmployeeList.jsx';
+import EmployeeForm from './Components/DashBoard/Employee/EmployeeForm.jsx';
 
 const queryClient = new QueryClient()
 
@@ -38,17 +40,32 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>,
       },
+    ]
+  },
+
+  {
+    path: 'dashboard',
+    element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+    children: [
+      // hr  
       {
-        path: 'dashboard',
-        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+        path: 'employee-list',
+        element: <EmployeeList></EmployeeList>
       },
       {
-        path:'employee-details/:_id',
-        element:<EmployeeChart></EmployeeChart>,
-        loader:({params})=>fetch(`http://localhost:5000/users/${params._id}`)
+        path: 'employee-details/:_id',
+        element: <EmployeeChart></EmployeeChart>,
+        loader: ({ params }) => fetch(`http://localhost:5000/users/${params._id}`)
+      },
+      // employee 
+      {
+        path: 'work-sheet',
+        element: <EmployeeForm></EmployeeForm>,
       }
     ]
   },
+
+
 
 ]);
 

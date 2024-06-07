@@ -1,48 +1,64 @@
-import { FaAd, FaCalendar, FaEnvelope, FaHome, FaList, FaShoppingBag, FaShoppingCart, FaUser, FaUtensils } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
-import { IoMdMenu } from "react-icons/io";
-import { useContext } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Firebase/AuthProvider";
 import useUser from "../Hooks/useUser";
-import EmployeeList from "./EmployeeList";
+import EmployeeForm from "./Employee/EmployeeForm";
+import { RiContactsLine } from "react-icons/ri";
+import { IoHomeOutline } from "react-icons/io5";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { useContext } from "react";
 
 const DashBoard = () => {
     const [peopleArray] = useUser();
+    const { logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     if (!peopleArray || peopleArray.length === 0) {
         return <div>Loading...</div>;
     }
+
     const people = peopleArray[0];
     const { name, role } = people;
 
-    console.log(people); // Log the 'people' object to the console
+    // console.log(people); // Log the 'people' object to the console
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch();
+    };
 
     return (
-        <div >
-            {/* dashboard side bar  */}
-            {/* <div className="w-64 min-h-screen bg-black text-white"> */}
-                {/* <ul className="menu p-4 text-xl uppercase"> */}
-                    {(role === 'HR') &&
-                        <>
-                            <EmployeeList></EmployeeList>
-                        </>
-                    }
-                    {/* //         <>
-                    //             <li><NavLink to='/dashboard/userHome'><FaHome></FaHome>User Home</NavLink></li>
-                    //             <li><NavLink to='/dashboard/reservation'><FaCalendar></FaCalendar>Reservation</NavLink></li>
-                    //             <li><NavLink to='/dashboard/cart'><FaShoppingCart></FaShoppingCart>My Cart ({cart.length}) </NavLink></li>
-                    //             <li><NavLink to='/dashboard/review'><FaAd></FaAd> Add a review </NavLink></li>
-                    //             <li><NavLink to='/dashboard/bookings'><FaList></FaList>My Bookings</NavLink></li>
-                    //         </>
-                    //  */}
+        <div className="flex">
+            {/* dashboard side bar */}
+            <div className="w-64 min-h-screen bg-gray-400 text-white">
+                <ul className="menu p-4 text-xl uppercase">
+                    {role === 'HR' && (
+                        <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
+                    )}
+                    {role === 'Employee' && (
+                        <li> <NavLink to='/dashboard/work-sheet'><RiContactsLine />Work sheet </NavLink></li>
+                    )}
+
+
+
+
+
 
                     <div className="divider"></div>
-
-                {/* </ul> */}
-            {/* </div> */}
-            {/* dashboard side bar  */}
-     
+                    <li><NavLink to='/'><IoHomeOutline />Home</NavLink></li>
+                    <li><NavLink to='/'><FaArrowRightFromBracket />
+                        <button className="flex justify-start" onClick={handleLogout}>
+                            Logout
+                        </button></NavLink></li>
+                </ul>
             </div>
-        // </div>
+            {/* dashboard side bar */}
+            <div className="flex-1 p-8">
+                <Outlet />
+            </div>
+        </div>
     );
 };
 

@@ -38,6 +38,7 @@ const DashBoard = () => {
                     {role === 'HR' && (
                         <>
                         <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
+                        <li> <NavLink to='/dashboard/progress'><RiContactsLine />Work Progress</NavLink></li>
                         </>
                     )}
                     {role === 'Employee' && (

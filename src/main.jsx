@@ -21,7 +21,7 @@ import EmployeeChart from './Components/DashBoard/EmployeeChart.jsx';
 import EmployeeList from './Components/DashBoard/EmployeeList.jsx';
 import EmployeeForm from './Components/DashBoard/Employee/EmployeeForm.jsx';
 import PaymentHistory from './Components/DashBoard/Employee/PaymentHistory.jsx';
-
+import WorkProgress from './Components/DashBoard/WorkProgress.jsx';
 
 const queryClient = new QueryClient()
 
@@ -58,6 +58,10 @@ const router = createBrowserRouter([
         path: 'employee-details/:_id',
         element: <EmployeeChart></EmployeeChart>,
         loader: ({ params }) => fetch(`http://localhost:5000/users/${params._id}`)
+      },
+      {
+        path: 'progress',
+        element: <WorkProgress></WorkProgress>,
       },
       // employee 
       {

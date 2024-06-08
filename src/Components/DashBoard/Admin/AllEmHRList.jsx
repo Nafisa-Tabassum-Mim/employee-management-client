@@ -47,6 +47,31 @@ const AllEmHRList = () => {
         });
     }
 
+    const handleFire = (name, id, role) => {
+        Swal.fire({
+            title: `Are you sure about firing ${name}?`,
+            text: "Are you sure about removing this person from your office!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "green",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(`/users/fire/${id}`)
+                console.log(res)
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Fired!",
+                        text: `${name} is fired from ${role}!`,
+                        icon: "success"
+                    });
+                    refetch()
+                }
+            }
+        });
+    }
+
 
     return (
         <div>
@@ -78,7 +103,12 @@ const AllEmHRList = () => {
                                 </td>
                                 <td>
                                     {/* Add logic for firing */}
-                                    <button>Fire</button>
+                                    {
+                                        (i.isFired === 'Fired') ?
+                                            <button className="text-red-500" >Fired</button>
+                                            :
+                                            <button className="text-green-500" onClick={() => handleFire(i.name, i._id, i.role)}>Fire </button>
+                                    }
                                 </td>
                             </tr>
                         ))}

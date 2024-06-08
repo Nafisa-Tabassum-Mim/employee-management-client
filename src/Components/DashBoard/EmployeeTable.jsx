@@ -14,9 +14,15 @@ const EmployeeTable = ({ user, handleVerification, handlePay }) => {
             <td>{name}</td>
             <td>{email}</td>
             <td className="text-green-600">
-                <button onClick={() => handleVerification(_id)} className="btn btn-ghost">
-                    {isVerified === 'verified' ? <TiTick className="text-green-600 text-2xl font-bold" /> : <ImCross className="text-red-600 text-2xl font-bold" />}
-                </button>
+                {isVerified === 'verified' ? (
+                    <button>
+                        <TiTick className="text-green-600 text-2xl font-bold" />
+                    </button>
+                ) : (
+                    <button onClick={() => handleVerification(_id)}>
+                        <ImCross className="text-red-600 text-2xl font-bold" />
+                    </button>
+                )}
             </td>
             <td>{account}</td>
             <td>{salary}</td>
@@ -28,7 +34,7 @@ const EmployeeTable = ({ user, handleVerification, handlePay }) => {
                             <div className="modal-box">
                                 <div className="p-2">
                                     <h2 className="text-xl font-bold my-4">Pay {name}'s Salary</h2>
-                                    <form onSubmit={(e) => handlePay(e, _id,salary,startDate,email)}>
+                                    <form onSubmit={(e) => handlePay(e, _id, salary, startDate, email)}>
                                         <div className="mb-8 gap-2">
                                             <div className="form-control w-full">
                                                 <label className="label">

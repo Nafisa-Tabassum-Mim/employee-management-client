@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { GrUserManager } from "react-icons/gr";
 import { ImCross } from "react-icons/im";
+import Swal from "sweetalert2";
 
 const AllEmHRList = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: users = [] } = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users`);
@@ -21,14 +22,29 @@ const AllEmHRList = () => {
     );
     console.log(userFilter);
 
-    const handleMakeHR = i => {
-        console.log(i)
-        const hrInfo ={
-            designation:'HR',
-            role:'HR'
-        }
-        const res = axiosSecure.patch(`/users/:${i._id}`,hrInfo)
-        // console.log(i._id)
+    const handleMakeHR = (name, id) => {
+        Swal.fire({
+            title: `Are you sure about appointing ${name} as the HR?`,
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "green",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(`/users/${id}`)
+                console.log(res)
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Promoted!",
+                        text: `${name} position is updated from employee to HR!`,
+                        icon: "success"
+                    });
+                    refetch()
+                }
+            }
+        });
     }
 
 
@@ -57,7 +73,7 @@ const AllEmHRList = () => {
                                         (i.role === 'HR') ?
                                             <button><GrUserManager /></button>
                                             :
-                                            <button className="text-red-500" onClick={() => handleMakeHR(i)}><ImCross></ImCross> </button>
+                                            <button className="text-red-500" onClick={() => handleMakeHR(i.name, i._id)}><ImCross></ImCross> </button>
                                     }
                                 </td>
                                 <td>

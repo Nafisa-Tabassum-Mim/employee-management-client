@@ -19,7 +19,7 @@ const EmployeeTable = ({ user, handleVerification, handlePay }) => {
                         <TiTick className="text-green-600 text-2xl font-bold" />
                     </button>
                 ) : (
-                    <button onClick={() => handleVerification(_id)}>
+                    <button onClick={() => handleVerification(_id, name)}>
                         <ImCross className="text-red-600 text-2xl font-bold" />
                     </button>
                 )}

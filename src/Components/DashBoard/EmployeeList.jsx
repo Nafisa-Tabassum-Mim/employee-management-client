@@ -16,19 +16,30 @@ const EmployeeList = () => {
             return res.data
         }
     })
-    // console.log(users)
 
-    const handleVerification = async (id) => {
-        const res = await axiosSecure.patch(`/users/${id}`);
-        console.log(res);
-        refetch();
-        if (res.data.modifiedCount > 0) {
-            Swal.fire({
-                title: "Good news!",
-                text: `employee is now verified!`,
-                icon: "success"
-            });
-        }
+    const handleVerification = async (id,name) => {
+        Swal.fire({
+            title: `Are you sure about verifying ${name} for the employee post?`,
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "green",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(`/users/${id}`)
+                console.log(res)
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Verified!",
+                        text: `${name} is now verified as a employee !`,
+                        icon: "success"
+                    });
+                    refetch()
+                }
+            }
+        });
     }
     const handlePay = async (e, id, salary, startDate,email) => {
         e.preventDefault();

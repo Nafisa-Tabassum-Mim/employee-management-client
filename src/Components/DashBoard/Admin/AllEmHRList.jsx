@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { GrUserManager } from "react-icons/gr";
+import { ImCross } from "react-icons/im";
 
 const AllEmHRList = () => {
     const axiosSecure = useAxiosSecure();
@@ -12,12 +14,23 @@ const AllEmHRList = () => {
         },
     });
 
-    const userFilter = users.filter(i => 
-        (i.isVerified === 'verified' && i.role === 'Employee') || 
+    const userFilter = users.filter(i =>
+        (i.isVerified === 'verified' && i.role === 'Employee') ||
         (i.role === 'HR') &&
         (i.role !== 'Admin')
     );
     console.log(userFilter);
+
+    const handleMakeHR = i => {
+        console.log(i)
+        const hrInfo ={
+            designation:'HR',
+            role:'HR'
+        }
+        const res = axiosSecure.patch(`/users/:${i._id}`,hrInfo)
+        // console.log(i._id)
+    }
+
 
     return (
         <div>
@@ -38,9 +51,14 @@ const AllEmHRList = () => {
                                 <td>{index + 1}</td>
                                 <td>{i.name}</td>
                                 <td>{i.designation}</td>
-                                <td>
+                                <td className="text-2xl">
                                     {/* Add logic for making HR */}
-                                    <button>Make HR</button>
+                                    {
+                                        (i.role === 'HR') ?
+                                            <button><GrUserManager /></button>
+                                            :
+                                            <button className="text-red-500" onClick={() => handleMakeHR(i)}><ImCross></ImCross> </button>
+                                    }
                                 </td>
                                 <td>
                                     {/* Add logic for firing */}

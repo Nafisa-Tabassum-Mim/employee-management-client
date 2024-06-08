@@ -3,9 +3,12 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { GrUserManager } from "react-icons/gr";
 import { ImCross } from "react-icons/im";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const AllEmHRList = () => {
     const axiosSecure = useAxiosSecure();
+    const [newSalary, setNewSalary] = useState(0);
+
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -20,7 +23,7 @@ const AllEmHRList = () => {
         (i.role === 'HR') &&
         (i.role !== 'Admin')
     );
-    console.log(userFilter);
+    // console.log(userFilter);
 
     const handleMakeHR = (name, id) => {
         Swal.fire({
@@ -73,8 +76,28 @@ const AllEmHRList = () => {
     }
 
 
+    // Function to handle updating the salary
+    const updateSalary = async (id, newSalary) => {
+        const res = await axiosSecure.patch(`/users/salary/${id}`, { salary: newSalary })
+        console.log(res)
+        if (res.data.modifiedCount > 0) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Salary has been updated",
+                showConfirmButton: false,
+                timer: 1000
+            });
+            refetch()
+        }
+    };
+
+
     return (
         <div>
+            <h3 className="text-3xl text-center text-white m-12">
+                <span className="bg-gray-700 px-2 rounded-xl font-mono">Admin</span>
+            </h3>
             <div className="overflow-x-auto">
                 <table className="table w-full text-xl">
                     <thead>
@@ -84,6 +107,7 @@ const AllEmHRList = () => {
                             <th>Designation</th>
                             <th>Make HR</th>
                             <th>Fire</th>
+                            <th>Salary</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,6 +133,19 @@ const AllEmHRList = () => {
                                             :
                                             <button className="text-green-500" onClick={() => handleFire(i.name, i._id, i.role)}>Fire </button>
                                     }
+                                </td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        onChange={(e) => setNewSalary(e.target.value)} // Update newSalary state when input value changes
+                                        placeholder="salary"
+                                        name="salary"
+                                        defaultValue={i.salary}
+                                        className="w-[100px] input input-bordered"
+                                    />
+                                    <button onClick={() => updateSalary(i._id, newSalary)} className="ml-2 bg-green-500 btn text-white">
+                                        update salary
+                                    </button>
                                 </td>
                             </tr>
                         ))}

@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from "react";
 import app from "./firebase.config";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useUser from "../Hooks/useUser";
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)

@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
             const userEmail = currentUser?.email ;
             const loggedUser = { email: userEmail };
             
-            console.log('current user', currentUser);
+            // console.log('current user', currentUser);
 
             
             //if user exist then issue a token
@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
                     .then((res) => {
                         setUser(currentUser);
                         setLoading(false);
-                        console.log('token response', res.data)
+                        // console.log('token response', res.data)
                     })
             }
             else{
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
                 })
                 .then(res=>{
                     setLoading(false);
-                    console.log(res.data)
+                    // console.log(res.data)
                 })
             }
         });

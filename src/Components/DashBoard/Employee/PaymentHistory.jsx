@@ -18,7 +18,7 @@ const PaymentHistory = () => {
             return res.data;
         },
     });
-    console.log(payments);
+    // console.log(payments);
 
     // Sort payments by date in descending order (earliest first)
     const sortedPayments = payments.slice().sort((a, b) => new Date(b.date) - new Date(a.date));

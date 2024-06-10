@@ -24,12 +24,12 @@ const EmployeeForm = () => {
         const name = user.displayName
 
         const workItem = { task, work, date, email, name };
-        console.log(workItem);
+        // console.log(workItem);
 
         // send data to the server
         axiosSecure.post('/works', workItem)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: "top-end",
@@ -63,7 +63,7 @@ const EmployeeForm = () => {
 
     return (
         <div>
-            <h3 className="text-3xl text-center text-white m-12">
+            <h3 className="md:text-3xl text-center text-white m-12">
                 <span className="bg-gray-700 px-2 rounded-xl font-mono">Work Sheet of {user.displayName}</span>
             </h3>
             <form onSubmit={handleWorkRequest} ref={formRef} className="flex justify-center gap-6"> {/* Attach the ref to the form */}

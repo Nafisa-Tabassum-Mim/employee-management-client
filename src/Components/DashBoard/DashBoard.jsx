@@ -33,27 +33,28 @@ const DashBoard = () => {
     };
 
     return (
-        <div className="flex">
+        <div className="lg:flex">
             {/* dashboard side bar */}
-            <div className="w-64 min-h-screen bg-gray-400 text-white">
+            <div className="w-64 min-h-screen hidden lg:flex bg-gray-400 text-white">
+
                 <ul className="menu p-4 text-lg uppercase">
                     {role === 'HR' && (
                         <>
-                        <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
-                        <li> <NavLink to='/dashboard/progress'><FaRegFileAlt />Work Progress</NavLink></li>
+                            <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
+                            <li> <NavLink to='/dashboard/progress'><FaRegFileAlt />Work Progress</NavLink></li>
                         </>
                     )}
                     {role === 'Employee' && (
-                       <>
-                        <li> <NavLink to='/dashboard/work-sheet'><RiContactsLine />Work sheet </NavLink></li>
-                        <li> <NavLink to='/dashboard/payment-history'><MdOutlineAttachMoney />Payment History </NavLink></li>
-                       </>
+                        <>
+                            <li> <NavLink to='/dashboard/work-sheet'><RiContactsLine />Work sheet </NavLink></li>
+                            <li> <NavLink to='/dashboard/payment-history'><MdOutlineAttachMoney />Payment History </NavLink></li>
+                        </>
                     )}
                     {role === 'Admin' && (
-                           <>
-                           <li> <NavLink to='/dashboard/all-employee-list'><RiContactsLine />All Employee List</NavLink></li>
-                           <li> <NavLink to='/dashboard/message'><TiMessages />Messages</NavLink></li>
-                           </>
+                        <>
+                            <li> <NavLink to='/dashboard/all-employee-list'><RiContactsLine />All Employee List</NavLink></li>
+                            <li> <NavLink to='/dashboard/message'><TiMessages />Messages</NavLink></li>
+                        </>
                     )}
 
 
@@ -64,9 +65,51 @@ const DashBoard = () => {
                             Logout
                         </button></NavLink></li>
                 </ul>
+
+
+
+
+            </div>
+            {/* lg icon  */}
+            <div className="dropdown">
+                <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </div>
+                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow text-black rounded-box w-52">
+                    {/* {links} */}
+                    <ul className="menu p-4 text-lg uppercase">
+                        {role === 'HR' && (
+                            <>
+                                <li> <NavLink to='/dashboard/employee-list'><RiContactsLine />Employee List</NavLink></li>
+                                <li> <NavLink to='/dashboard/progress'><FaRegFileAlt />Work Progress</NavLink></li>
+                            </>
+                        )}
+                        {role === 'Employee' && (
+                            <>
+                                <li> <NavLink to='/dashboard/work-sheet'><RiContactsLine />Work sheet </NavLink></li>
+                                <li> <NavLink to='/dashboard/payment-history'><MdOutlineAttachMoney />Payment History </NavLink></li>
+                            </>
+                        )}
+                        {role === 'Admin' && (
+                            <>
+                                <li> <NavLink to='/dashboard/all-employee-list'><RiContactsLine />All Employee List</NavLink></li>
+                                <li> <NavLink to='/dashboard/message'><TiMessages />Messages</NavLink></li>
+                            </>
+                        )}
+
+
+                        <div className="divider"></div>
+                        <li><NavLink to='/'><IoHomeOutline />Home</NavLink></li>
+                        <li><NavLink to='/'><FaArrowRightFromBracket />
+                            <button className="flex justify-start" onClick={handleLogout}>
+                                Logout
+                            </button></NavLink></li>
+                    </ul>
+
+                </ul>
             </div>
             {/* dashboard side bar */}
-            <div className="flex-1 p-8">
+            <div className="flex-1 lg:p-8">
                 <Outlet />
             </div>
         </div>

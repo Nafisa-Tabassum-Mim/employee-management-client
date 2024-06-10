@@ -12,9 +12,9 @@ const Contact = () => {
 
 
         const updatePost = { email, message }
-        console.log(updatePost)
+        // console.log(updatePost)
         const res = await axiosPublic.post(`/message`, updatePost);
-        console.log(res);
+        // console.log(res);
         if (res.data.insertedId) {
             toast('message is sent!')
             form.reset()

@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       {
         path: 'employee-details/:_id',
         element: <HRRoute><EmployeeChart></EmployeeChart></HRRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/users/${params._id}`)
+        loader: ({ params }) => fetch(`https://employee-management-server-sigma.vercel.app/users/${params._id}`)
       },
       {
         path: 'progress',

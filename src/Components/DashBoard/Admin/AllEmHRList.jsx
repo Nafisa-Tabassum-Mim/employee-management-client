@@ -37,7 +37,7 @@ const AllEmHRList = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.patch(`/users/${id}`)
-                console.log(res)
+                // console.log(res)
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Promoted!",
@@ -62,7 +62,7 @@ const AllEmHRList = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.patch(`/users/fire/${id}`)
-                console.log(res)
+                // console.log(res)
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Fired!",
@@ -79,7 +79,7 @@ const AllEmHRList = () => {
     // Function to handle updating the salary
     const updateSalary = async (id, newSalary) => {
         const res = await axiosSecure.patch(`/users/salary/${id}`, { salary: newSalary })
-        console.log(res)
+        // console.log(res)
         if (res.data.modifiedCount > 0) {
             Swal.fire({
                 position: "top-end",

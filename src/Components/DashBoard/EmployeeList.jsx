@@ -29,7 +29,7 @@ const EmployeeList = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.patch(`/users/${id}`)
-                console.log(res)
+                // console.log(res)
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Verified!",
@@ -50,7 +50,7 @@ const EmployeeList = () => {
             email:email
         };
         const res = await axiosSecure.post(`/payment`, paymentInfo);
-        console.log(res);
+        // console.log(res);
         if (res.data.insertedId) {
             toast('Payment is done !')
         }

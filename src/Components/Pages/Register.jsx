@@ -25,13 +25,13 @@ const Register = () => {
 
         // image upload to imbb 
         const imageFile = { image: e.target.photo.files[0] }
-        console.log(imageFile)
+        // console.log(imageFile)
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         })
-        console.log(res)
+        // console.log(res)
         if (res.data.success) {
             const name = e.target.name.value
             // const photo = e.target.photo.value
@@ -91,7 +91,7 @@ const Register = () => {
                             }
                             axiosPublic.post('/users', newUserInfo)
                                 .then((res) => {
-                                    console.log(res)
+                                    // console.log(res)
                                     if (res.data.insertedId) {
                                         // reset()
                                         navigate(location?.state ? location.state : '/')

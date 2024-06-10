@@ -72,9 +72,9 @@ const Login = () => {
             <div className="flex justify-center gap-4 flex-col-reverse md:flex-row">
 
                 <div className='relative h-[600px]'>
-                    <img src="https://i.ibb.co/t4JjB02/Mountain-logo-Design-Graphics-9785421-1-580x435.png" alt="" />
+                    <img src="https://i.ibb.co/MZtTggk/logo-design-good-designer.jpg" alt="" />
                 </div>
-                <div className="card  w-full max-w-md shadow-md shadow-roaming  shadow-green-300 shadow-t-2 my-4 md:my-12">
+                <div className="card  w-full max-w-md shadow-md shadow-roaming  shadow-blue-300 shadow-t-2 my-4 md:my-12">
                     <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
@@ -99,7 +99,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-green-500 text-white hover:bg-green-300 ">Login</button>
+                            <button className="btn bg-black text-white hover:bg-blue-300 ">Login</button>
                         </div>
                         <div className="text-center text-white font-black">
                             You can also login by
@@ -112,7 +112,7 @@ const Login = () => {
                             </div>
                             <div className="border-b border-black w-full"></div>
                         </div>
-                        <p className="text-center mt-4">Do not have an account ? <Link className="text-green-300 font-bold" to="/register">Register</Link> </p>
+                        <p className="text-center mt-4">Do not have an account ? <Link className="text-blue-300 font-bold" to="/register">Register</Link> </p>
 
                     </form>
 

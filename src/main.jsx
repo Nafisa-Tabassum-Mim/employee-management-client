@@ -24,6 +24,7 @@ import PaymentHistory from './Components/DashBoard/Employee/PaymentHistory.jsx';
 import WorkProgress from './Components/DashBoard/WorkProgress.jsx';
 import AllEmHRList from './Components/DashBoard/Admin/AllEmHRList.jsx';
 import Contact from './Components/Pages/Contact.jsx';
+import Message from './Components/DashBoard/Admin/Message.jsx';
 
 const queryClient = new QueryClient()
 
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: 'all-employee-list',
         element: <AllEmHRList></AllEmHRList>,
+      },
+      {
+        path: 'message',
+        element: <Message></Message>,
       },
     ]
   },

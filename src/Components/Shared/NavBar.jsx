@@ -68,7 +68,7 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <img src="https://i.ibb.co/t4JjB02/Mountain-logo-Design-Graphics-9785421-1-580x435.png" className="h-24 w-28 hidden md:block" alt="" />
+                <img src="https://i.ibb.co/MZtTggk/logo-design-good-designer.jpg" className="h-8 w-12 hidden md:block rounded-full" alt="" />
                 <a className="btn btn-ghost text-3xl">Probiz</a>
             </div>
             <div className="navbar-center hidden lg:flex">

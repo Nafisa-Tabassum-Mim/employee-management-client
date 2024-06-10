@@ -8,6 +8,7 @@ import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { useContext } from "react";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { FaRegFileAlt } from "react-icons/fa";
+import { TiMessages } from "react-icons/ti";
 
 const DashBoard = () => {
     const [peopleArray] = useUser();
@@ -51,6 +52,7 @@ const DashBoard = () => {
                     {role === 'Admin' && (
                            <>
                            <li> <NavLink to='/dashboard/all-employee-list'><RiContactsLine />All Employee List</NavLink></li>
+                           <li> <NavLink to='/dashboard/message'><TiMessages />Messages</NavLink></li>
                            </>
                     )}
 

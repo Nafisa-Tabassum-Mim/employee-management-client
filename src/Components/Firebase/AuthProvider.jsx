@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import app from "./firebase.config";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -12,7 +13,8 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const axiosSecure = useAxiosSecure()
-   
+    const axiosPublic = useAxiosPublic()
+
     // create id / signUp
     const createUser = (email, password) => {
         setLoading(true)
@@ -30,46 +32,45 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signOut(auth)
     }
-  
+
 
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            const userEmail = currentUser?.email;
+            const userEmail = currentUser?.email ;
             const loggedUser = { email: userEmail };
-            setUser(currentUser);
+            
             console.log('current user', currentUser);
 
-            // if user exist then issue a token
+            
+            //if user exist then issue a token
             if (currentUser) {
-                // axios.post('https://volunteer-website-server.vercel.app/jwt', loggedUser, {
-                //     withCredentials: true
-                // })
-                //     .then((res) => {
-                setUser(currentUser);
-                setLoading(false);
-                //     console.log('token response', res.data)
-                // })
-
+                axiosPublic.post('/jwt', loggedUser, {
+                    withCredentials: true
+                })
+                    .then((res) => {
+                        setUser(currentUser);
+                        setLoading(false);
+                        console.log('token response', res.data)
+                    })
             }
-            else {
+            else{
                 setUser(null);
-                // axios.post('https://volunteer-website-server.vercel.app/logout',loggedUser,{
-                //     withCredentials:true
-                // })
-                // .then(res=>{
-                setLoading(false);
-                //     console.log(res.data)
-                // })
+                axiosPublic.post('/logout',loggedUser,{
+                    withCredentials:true
+                })
+                .then(res=>{
+                    setLoading(false);
+                    console.log(res.data)
+                })
             }
         });
         return () => {
-            unsubscribe();
-
+             unsubscribe();
         }
     }, [])
 
-    const {  data: people = [] } = useQuery({
+    const { data: people = [] } = useQuery({
         queryKey: ['people', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users?email=${user.email}`)

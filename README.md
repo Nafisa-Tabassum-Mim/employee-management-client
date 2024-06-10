@@ -1,9 +1,16 @@
-# React + Vite
+## Website name - Youth Volunteer Foundation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live site URL- [firebase live link](https://volunteer-91281.web.app/)
 
-Currently, two official plugins are available:
+## Website feature:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# b9a12-client-side-Nafisa-Tabassum-Mim" 
+- Assignment Category - 12
+- It is a Employee management website of a electronic company.
+- This website is for Probiz company who wants to monitor the workload of the employees and keep records of salary, contracts etc.
+- In Probiz website employees can post the updates of their workflow, the HR (Human Resources) Executive needs to monitor the employee workflow, be able to pay them
+- People can visit this website and contact with this company through Admin . 
+- search,update position,fired options added.
+- Login option - Email, Google Amazing user experience.
+
+### Admin email - probiz@gmail.com
+### Admin pass -  123456Probiz!

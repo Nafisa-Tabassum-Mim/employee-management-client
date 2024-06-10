@@ -1,4 +1,5 @@
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Contact = () => {
@@ -22,7 +23,7 @@ const Contact = () => {
 
 
     return (
-        <div className='bg-gray-300 py-6 '>
+        <div className='bg-gray-400 py-6 text-white'>
             <div className='py-4 px-6'>
                 <h3 className='text-2xl '>Contact with our address</h3>
                 <h3 className='text-2xl'>Address - 2515 Speedway, Austin, Texas, USA  </h3>
@@ -55,6 +56,7 @@ const Contact = () => {
 
                 <input type="submit" value="Send your opinion" className="btn btn-block bg-black font-medium text-lg text-white  " />
             </form>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import AdminRoute from "../AdminRoute";
 
 const Message = () => {
     const axiosPublic = useAxiosPublic();
@@ -25,6 +26,7 @@ const Message = () => {
                     </div>
                 ))
             }
+            <AdminRoute></AdminRoute>
         </div>
     );
 };

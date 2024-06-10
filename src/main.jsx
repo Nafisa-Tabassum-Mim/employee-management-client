@@ -25,6 +25,9 @@ import WorkProgress from './Components/DashBoard/WorkProgress.jsx';
 import AllEmHRList from './Components/DashBoard/Admin/AllEmHRList.jsx';
 import Contact from './Components/Pages/Contact.jsx';
 import Message from './Components/DashBoard/Admin/Message.jsx';
+import AdminRoute from './Components/DashBoard/AdminRoute.jsx';
+import EmployeeRoute from './Components/DashBoard/EmployeeRoute.jsx';
+import HRRoute from './Components/DashBoard/HRRoute.jsx';
 
 const queryClient = new QueryClient()
 
@@ -59,34 +62,34 @@ const router = createBrowserRouter([
       // hr  
       {
         path: 'employee-list',
-        element: <EmployeeList></EmployeeList>
+        element: <HRRoute><EmployeeList></EmployeeList></HRRoute>
       },
       {
         path: 'employee-details/:_id',
-        element: <EmployeeChart></EmployeeChart>,
+        element: <HRRoute><EmployeeChart></EmployeeChart></HRRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/users/${params._id}`)
       },
       {
         path: 'progress',
-        element: <WorkProgress></WorkProgress>,
+        element: <HRRoute><WorkProgress></WorkProgress></HRRoute>,
       },
       // employee 
       {
         path: 'work-sheet',
-        element: <EmployeeForm></EmployeeForm>,
+        element: <EmployeeRoute><EmployeeForm></EmployeeForm></EmployeeRoute>,
       },
       {
         path: 'payment-history',
-        element: <PaymentHistory></PaymentHistory>,
+        element: <EmployeeRoute><PaymentHistory></PaymentHistory></EmployeeRoute>,
       },
       // admin 
       {
         path: 'all-employee-list',
-        element: <AllEmHRList></AllEmHRList>,
+        element: <AdminRoute><AllEmHRList></AllEmHRList></AdminRoute>,
       },
       {
         path: 'message',
-        element: <Message></Message>,
+        element: <AdminRoute><Message></Message></AdminRoute>,
       },
     ]
   },

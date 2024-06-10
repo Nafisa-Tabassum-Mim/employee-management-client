@@ -21,15 +21,16 @@ const NavBar = () => {
     }
 
     const links = <>
-        <li className=" font-black text-xl "><NavLink to="/" >Home </NavLink></li>
-        <li className=" font-black text-xl "><NavLink to="/contact-us" >Contact us </NavLink></li>
-        <li className="font-black text-xl "><NavLink to="/dashboard">Dashboard </NavLink></li>
+        <li className="  text-xl "><NavLink to="/" >Home </NavLink></li>
+        <li className="  text-xl "><NavLink to="/contact-us" >Contact us </NavLink></li>
+        <li className=" text-xl "><NavLink to="/dashboard">Dashboard </NavLink></li>
 
     </>
 
 
     return (
-        <div className="navbar bg-base-100 border-b-2 ">
+        <div className="navbar fixed z-10 bg-black text-white bg-opacity-25 max-w-screen-xl">
+
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

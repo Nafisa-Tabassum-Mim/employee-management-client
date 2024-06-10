@@ -23,7 +23,7 @@ const Contact = () => {
 
 
     return (
-        <div className='bg-gray-400 py-6 text-white'>
+        <div className='bg-gray-400 py-6 text-white pt-28'>
             <div className='py-4 px-6'>
                 <h3 className='text-2xl '>Contact with our address</h3>
                 <h3 className='text-2xl'>Address - 2515 Speedway, Austin, Texas, USA  </h3>

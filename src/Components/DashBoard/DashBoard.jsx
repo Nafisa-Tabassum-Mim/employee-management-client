@@ -55,10 +55,6 @@ const DashBoard = () => {
                     )}
 
 
-
-
-
-
                     <div className="divider"></div>
                     <li><NavLink to='/'><IoHomeOutline />Home</NavLink></li>
                     <li><NavLink to='/'><FaArrowRightFromBracket />

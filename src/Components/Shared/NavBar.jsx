@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Firebase/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const NavBar = () => {
+    const axiosSecure = useAxiosSecure()
     const [isLogoutVisible, setIsLogoutVisible] = useState(false);
     const { logOut, user } = useContext(AuthContext)
     const location = useLocation()
@@ -20,10 +23,35 @@ const NavBar = () => {
         setIsLogoutVisible(!isLogoutVisible);
     }
 
+    const { data: people = [] } = useQuery({
+        queryKey: ['people', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users?email=${user.email}`)
+            return res.data
+        }
+    })
+    console.log(people)
+    let role = '';
+    if (people.length > 0) {
+        role = people[0].role;
+    }
+
     const links = <>
         <li className="  text-xl "><NavLink to="/" >Home </NavLink></li>
         <li className="  text-xl "><NavLink to="/contact-us" >Contact us </NavLink></li>
-        <li className=" text-xl "><NavLink to="/dashboard">Dashboard </NavLink></li>
+
+        {role === 'Admin' && (
+            <li className=" text-xl "> <NavLink to='/dashboard/all-employee-list'>Dashboard</NavLink></li>
+
+        )}
+
+        {role === 'Employee' && (
+            <li className=" text-xl "><NavLink to='/dashboard/work-sheet'>Dashboard</NavLink></li>
+        )}
+
+        {role === 'HR' && (
+            <li className=" text-xl "><NavLink to='/dashboard/employee-list'>Dashboard</NavLink></li>
+        )}
 
     </>
 

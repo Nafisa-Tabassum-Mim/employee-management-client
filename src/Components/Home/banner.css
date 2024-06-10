@@ -1,3 +1,7 @@
 .featured-item{
     background-image: url('https://i.ibb.co/zVL7ss0/5-Desk-Setup-with-a-Laptop-Monitor-Ideas-for-2021-7da2389457c.jpg');
 }
+
+.swiper-slide {
+    height: 300px; /* Adjust the height as per your requirement */
+}

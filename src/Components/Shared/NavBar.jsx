@@ -21,7 +21,7 @@ const NavBar = () => {
     }
 
     const links = <>
-        <li className=" font-black text-xl "><NavLink to="/" >Contact us </NavLink></li>
+        <li className=" font-black text-xl "><NavLink to="/contact-us" >Contact us </NavLink></li>
         <li className="font-black text-xl "><NavLink to="/dashboard">Dashboard </NavLink></li>
 
     </>

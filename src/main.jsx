@@ -23,7 +23,7 @@ import EmployeeForm from './Components/DashBoard/Employee/EmployeeForm.jsx';
 import PaymentHistory from './Components/DashBoard/Employee/PaymentHistory.jsx';
 import WorkProgress from './Components/DashBoard/WorkProgress.jsx';
 import AllEmHRList from './Components/DashBoard/Admin/AllEmHRList.jsx';
-
+import Contact from './Components/Pages/Contact.jsx';
 
 const queryClient = new QueryClient()
 
@@ -35,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+      },
+      {
+        path: '/contact-us',
+        element: <Contact></Contact>,
       },
       {
         path: '/login',
